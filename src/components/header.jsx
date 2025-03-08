@@ -2,20 +2,23 @@ import "./header.css";
 import { useState } from "react";
 
 function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState("-250px");
-
+  const [isMenuOpen, setIsMenuOpen] = useState("translate-x-[-250px]");
   const toggleSideMenu = () => {
-    if (isMenuOpen === "-250px") {
-      setIsMenuOpen("0");
+    if (isMenuOpen === "translate-x-[-250px]") {
+      setIsMenuOpen("translate-x-[0px]");
     } else {
-      setIsMenuOpen("-250px");
+      setIsMenuOpen("translate-x-[-250px]");
     }
   };
   return (
     <>
-      <header className="top col-start-1 col-end-2 row-start-1 row-end-2 flex items-center justify-between bg-green-500 dark:bg-black">
+      <header
+        id="top"
+        className="top col-start-1 col-end-2 row-start-1 row-end-2 flex h-full w-full items-center justify-between bg-green-500  dark:bg-black"
+      >
         <svg
-          className="hamburger-menu ml-[15px] flex min-w-[30px] cursor-pointer justify-between text-white transition-transform hover:scale-[1.15]"
+          id="hamburger-menu"
+          className="hamburger-menu flex min-w-[30px] ml-[15px] cursor-pointer justify-between text-white transition-transform hover:scale-[1.15]"
           width="30"
           height="30"
           viewBox="0 0 24 24"
@@ -34,7 +37,7 @@ function Header() {
           <path d="M20 16H16V20H20V16Z" fill="currentColor" />
         </svg>
 
-        <div className="right-nav-icon not-[]:mr-[15px] flex cursor-pointer content-center gap-x-[15px]">
+        <div className="right-nav-icon mr-[15px] flex cursor-pointer content-center gap-x-[15px]">
           <svg
             id="moon-icon"
             xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +88,7 @@ function Header() {
         </div>
         <nav
           id="menu"
-          className={`menu absolute top-0 z-[2] h-[100vh] w-[250px] translate-x-[${isMenuOpen}] overflow-x-hidden bg-green-700`}
+          className={`absolute top-0 z-[2] h-[100vh] w-[250px] ${isMenuOpen} overflow-x-hidden bg-green-700`}
         >
           <div className="relative flex flex-col items-center">
             <a className="mt-[50px]" href="test1">
