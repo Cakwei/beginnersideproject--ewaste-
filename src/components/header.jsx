@@ -1,18 +1,27 @@
 import "./header.css";
+import { useState } from "react";
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState("-250px");
+
+  const toggleSideMenu = () => {
+    if (isMenuOpen === "-250px") {
+      setIsMenuOpen("0");
+    } else {
+      setIsMenuOpen("-250px");
+    }
+  };
   return (
     <>
-    
-      <header class="top dark:bg-black col-start-1 col-end-2 row-start-1 row-end-2 flex items-center justify-between bg-green-500">
+      <header className="top col-start-1 col-end-2 row-start-1 row-end-2 flex items-center justify-between bg-green-500 dark:bg-black">
         <svg
-          class="hamburger-menu ml-[15px] flex min-w-[30px] cursor-pointer justify-between text-white transition-transform hover:scale-[1.15] "
-          onclick="burgerOpen()"
+          className="hamburger-menu ml-[15px] flex min-w-[30px] cursor-pointer justify-between text-white transition-transform hover:scale-[1.15]"
           width="30"
           height="30"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          onClick={toggleSideMenu}
         >
           <path d="M4 4H8V8H4V4Z" fill="currentColor" />
           <path d="M4 10H8V14H4V10Z" fill="currentColor" />
@@ -24,8 +33,8 @@ function Header() {
           <path d="M16 10H20V14H16V10Z" fill="currentColor" />
           <path d="M20 16H16V20H20V16Z" fill="currentColor" />
         </svg>
-        
-        <div class="right-nav-icon not-[]:mr-[15px] flex cursor-pointer content-center gap-x-[15px]">
+
+        <div className="right-nav-icon not-[]:mr-[15px] flex cursor-pointer content-center gap-x-[15px]">
           <svg
             id="moon-icon"
             xmlns="http://www.w3.org/2000/svg"
@@ -33,20 +42,24 @@ function Header() {
             width="18"
             height="18"
             fill="currentColor"
-            class="bi bi-moon cursor-pointer self-center text-white hover:scale-[1.15]"
+            className="bi bi-moon cursor-pointer self-center text-white hover:scale-[1.15]"
             viewBox="0 0 16 16"
           >
             <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
           </svg>
           <button
-            onclick="window.location.href = 'login.html'"
-            class="account-btn-desktop relative hidden cursor-pointer self-center border-none bg-transparent pt-[8px] pr-[10px] pb-[8px] pl-[10px] text-base text-white md:block"
+            onClick={() => {
+              window.location.href = "login.html";
+            }}
+            className="account-btn-desktop relative hidden cursor-pointer self-center border-none bg-transparent pt-[8px] pr-[10px] pb-[8px] pl-[10px] text-base text-white md:block"
           >
             <div>Login/Register</div>
           </button>
           <button
-            onclick="window.location.href = 'login.html'"
-            class="account-btn-mobile cursor-pointer text-white transition-transform hover:scale-[1.15] md:hidden"
+            onClick={() => {
+              window.location.href = "login.html";
+            }}
+            className="account-btn-mobile cursor-pointer text-white transition-transform hover:scale-[1.15] md:hidden"
           >
             <div>
               <svg
@@ -70,6 +83,32 @@ function Header() {
             </div>
           </button>
         </div>
+        <nav
+          id="menu"
+          className={`menu absolute top-0 z-[2] h-[100vh] w-[250px] translate-x-[${isMenuOpen}] overflow-x-hidden bg-green-700`}
+        >
+          <div className="relative flex flex-col items-center">
+            <a className="mt-[50px]" href="test1">
+              1
+            </a>
+            <a href="test2">2</a>
+            <a href="test3">3</a>
+            <svg
+              className="close-menu-btn absolute top-[10px] right-[10px] cursor-pointer text-white"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              onClick={toggleSideMenu}
+            >
+              <path
+                d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </nav>
       </header>
     </>
   );

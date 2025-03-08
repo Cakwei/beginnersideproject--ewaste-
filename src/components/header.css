@@ -12,3 +12,19 @@
   width: 0;
   transition: all 0.45s;
 }
+#menu div a,
+#menu div a:link,
+#menu div a:visited {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  text-align: center;
+  color: white;
+}
+#menu div a:hover {
+  backdrop-filter: brightness(60%);
+}
+#menu {
+  transition: all 0.3s;
+}
