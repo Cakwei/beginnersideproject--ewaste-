@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+#account-btn-desktop div:hover::before {
+  width: 100%;
+}
+#account-btn-desktop div::before {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid white;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  transition: all 0.45s;
+}
