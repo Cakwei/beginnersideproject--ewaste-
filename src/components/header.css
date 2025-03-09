@@ -26,11 +26,9 @@
   width: 100%;
   height: 100%;
   padding: 25px;
-  text-align: center;
-  color: white;
 }
 #menu div a:hover {
-  backdrop-filter: brightness(60%);
+  backdrop-filter: brightness(90%);
 }
 #menu {
   transition: all 0.3s;

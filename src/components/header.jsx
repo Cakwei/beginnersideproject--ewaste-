@@ -1,6 +1,6 @@
 import "./header.css";
 import { useState } from "react";
-
+import { navLinks } from "../../constants";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState("translate-x-[-250px]");
   const toggleSideMenu = () => {
@@ -14,13 +14,13 @@ function Header() {
     <>
       <header
         id="top"
-        className="top col-start-1 col-end-2 row-start-1 row-end-2 flex h-full w-full items-center justify-between bg-green-500  dark:bg-black"
+        className="top col-start-1 col-end-2 row-start-1 row-end-2 flex h-full w-full items-center justify-between shadow dark:bg-black"
       >
         <svg
           id="hamburger-menu"
-          className="hamburger-menu flex min-w-[30px] ml-[15px] cursor-pointer justify-between text-white transition-transform hover:scale-[1.15]"
-          width="30"
-          height="30"
+          className="hamburger-menu ml-[15px] flex h-[32px] min-h-[32px] w-[32px] min-w-[32px] cursor-pointer justify-between transition-transform hover:scale-[1.15] dark:text-white"
+          width="0"
+          height="0"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -42,10 +42,10 @@ function Header() {
             id="moon-icon"
             xmlns="http://www.w3.org/2000/svg"
             color="white"
-            width="18"
-            height="18"
+            width="0"
+            height="0"
             fill="currentColor"
-            className="bi bi-moon cursor-pointer self-center text-white hover:scale-[1.15]"
+            className="bi bi-moon h-[22px] w-[22px] cursor-pointer self-center text-black hover:scale-[1.15] dark:text-white"
             viewBox="0 0 16 16"
           >
             <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
@@ -54,7 +54,7 @@ function Header() {
             onClick={() => {
               window.location.href = "login.html";
             }}
-            className="account-btn-desktop relative hidden cursor-pointer self-center border-none bg-transparent pt-[8px] pr-[10px] pb-[8px] pl-[10px] text-base text-white md:block"
+            className="account-btn-desktop relative hidden cursor-pointer self-center bg-green-500 pt-[8px] pr-[10px] pb-[8px] pl-[10px] text-base font-semibold text-white md:block dark:text-black"
           >
             <div>Login/Register</div>
           </button>
@@ -62,7 +62,7 @@ function Header() {
             onClick={() => {
               window.location.href = "login.html";
             }}
-            className="account-btn-mobile cursor-pointer text-white transition-transform hover:scale-[1.15] md:hidden"
+            className="account-btn-mobile cursor-pointer text-black transition-transform hover:scale-[1.15] md:hidden dark:text-white"
           >
             <div>
               <svg
@@ -88,16 +88,17 @@ function Header() {
         </div>
         <nav
           id="menu"
-          className={`absolute top-0 z-[2] h-[100vh] w-[250px] ${isMenuOpen} overflow-x-hidden bg-green-700`}
+          className={`absolute top-0 z-[2] h-[100vh] w-[250px] ${isMenuOpen} overflow-x-hidden bg-neutral-100`}
+          onMouseLeave={toggleSideMenu}
         >
           <div className="relative flex flex-col items-center">
-            <a className="mt-[50px]" href="test1">
-              1
-            </a>
-            <a href="test2">2</a>
-            <a href="test3">3</a>
+            {navLinks.map((item) => (
+              <a className="font-semibold" key={item.label} href={item.href}>
+                {item.label}
+              </a>
+            ))}
             <svg
-              className="close-menu-btn absolute top-[10px] right-[10px] cursor-pointer text-white"
+              className="close-menu-btn absolute top-[10px] right-[10px] hidden cursor-pointer text-black"
               width="24"
               height="24"
               viewBox="0 0 24 24"
