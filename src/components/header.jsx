@@ -1,13 +1,15 @@
 import "./header.css";
 import { useState } from "react";
 import { navLinks } from "../../constants";
-function Header() {
+function Header({ toggleDarkMode }) {
   const [isMenuOpen, setIsMenuOpen] = useState("translate-x-[-250px]");
   const toggleSideMenu = () => {
     if (isMenuOpen === "translate-x-[-250px]") {
       setIsMenuOpen("translate-x-[0px]");
+      document.getElementById("bgtest").style.visibility = "visible";
     } else {
       setIsMenuOpen("translate-x-[-250px]");
+      document.getElementById("bgtest").style.visibility = "hidden";
     }
   };
   return (
@@ -39,6 +41,7 @@ function Header() {
 
         <div className="right-nav-icon mr-[15px] flex cursor-pointer content-center gap-x-[15px]">
           <svg
+            onClick={toggleDarkMode}
             id="moon-icon"
             xmlns="http://www.w3.org/2000/svg"
             color="white"
@@ -88,8 +91,7 @@ function Header() {
         </div>
         <nav
           id="menu"
-          className={`absolute top-0 z-[2] h-[100vh] w-[250px] ${isMenuOpen} overflow-x-hidden bg-neutral-100`}
-          onMouseLeave={toggleSideMenu}
+          className={`absolute top-0 z-[2] h-[100vh] w-[250px] ${isMenuOpen} overflow-x-hidden rounded-tr-xl rounded-br-xl bg-neutral-100`}
         >
           <div className="relative flex flex-col items-center">
             {navLinks.map((item) => (
@@ -98,7 +100,7 @@ function Header() {
               </a>
             ))}
             <svg
-              className="close-menu-btn absolute top-[10px] right-[10px] hidden cursor-pointer text-black"
+              className="close-menu-btn absolute top-[10px] right-[10px] cursor-pointer text-black"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -114,6 +116,10 @@ function Header() {
           </div>
         </nav>
       </header>
+      <p
+        id="bgtest"
+        className="invisible absolute h-dvh w-dvw bg-black opacity-80"
+      ></p>
     </>
   );
 }
