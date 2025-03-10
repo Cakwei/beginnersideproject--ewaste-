@@ -83,7 +83,9 @@
       width: 50px;
       height: 75px;
   }
-  
+}
+.card:hover {
+  transform: scale(1.05);
 }
 .material-symbols-outlined {
   font-size: 50px;

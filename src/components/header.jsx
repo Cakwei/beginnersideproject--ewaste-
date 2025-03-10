@@ -2,16 +2,15 @@ import "./header.css";
 import { useState } from "react";
 import { navLinks } from "../constants";
 import reactImg from "../assets/react.svg";
+import { doc } from "prettier";
 function Header({ toggleDarkMode }) {
-  const [isMenuOpen, setIsMenuOpen] = useState("translate-x-[-250px]");
+  const [isMenuOpen, setIsMenuOpen] = useState("translate-x-[-275px]");
   const toggleSideMenu = () => {
-    if (isMenuOpen === "translate-x-[-250px]") {
+    if (isMenuOpen === "translate-x-[-275px]") {
       setIsMenuOpen("translate-x-[0px]");
-      document.getElementById("close-menu-btn").style.visibility = "visible";
       document.getElementById("bgtest").style.visibility = "visible";
     } else {
-      setIsMenuOpen("translate-x-[-250px]");
-      document.getElementById("close-menu-btn").style.visibility = "hidden";
+      setIsMenuOpen("translate-x-[-275px]");
       document.getElementById("bgtest").style.visibility = "hidden";
     }
   };
@@ -19,7 +18,7 @@ function Header({ toggleDarkMode }) {
     <>
       <header
         id="top"
-        className="top col-start-1 col-end-2 row-start-1 row-end-2 flex h-full w-full items-center justify-between shadow dark:bg-black"
+        className="top sticky top-0 z-1 col-start-1 col-end-2 row-start-1 row-end-2 flex h-full w-full items-center justify-between bg-white shadow dark:bg-black"
       >
         <svg
           id="hamburger-menu"
@@ -94,11 +93,11 @@ function Header({ toggleDarkMode }) {
         </div>
         <nav
           id="menu"
-          className={`absolute top-0 z-[2] h-[100vh] w-[250px] ${isMenuOpen} rounded-tr-xl rounded-br-xl bg-white`}
+          className={`absolute z-3 top-0 h-[100vh] w-[250px] ${isMenuOpen} rounded-tr-xl rounded-br-xl bg-white`}
         >
           <i
             id="close-menu-btn"
-            className="bi bi-arrow-left close-menu-btn invisible absolute top-[12px] left-[230px] z-[10] flex cursor-pointer items-center justify-center rounded-4xl bg-black p-[5px] text-2xl text-white"
+            className="bi bi-arrow-left close-menu-btn absolute top-[12px] left-[230px] z-[10] flex cursor-pointer items-center justify-center rounded-4xl bg-black p-[5px] text-2xl text-white"
             onClick={toggleSideMenu}
           ></i>
 
@@ -120,11 +119,13 @@ function Header({ toggleDarkMode }) {
             ))}
           </div>
         </nav>
-      </header>
-      <p
+        <p
         id="bgtest"
-        className="invisible absolute z-[1] h-dvh w-dvw bg-black opacity-50"
+        className="invisible z-[2] top-0 absolute h-dvh w-dvw bg-black opacity-50"
+        onClick={toggleSideMenu}
       ></p>
+      </header>
+      
     </>
   );
 }

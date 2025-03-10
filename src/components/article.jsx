@@ -1,12 +1,16 @@
 import "./article.css";
-import { profileImage, selectionOpt } from "../constants/index.js";
+import {
+  profileImage,
+  selectionOpt,
+  OfferFeatures,
+} from "../constants/index.js";
+import { doc } from "prettier";
 export default function Article() {
   return (
     <>
       <main
         id="article"
-        className="relative col-start-1 col-end-2 row-start-2 row-end-3 grid min-w-[250px] grid-cols-3 
-        grid-rows-[350px_auto_1fr_300px]"
+        className="relative col-start-1 col-end-2 row-start-2 row-end-3 grid min-w-[250px] grid-cols-3 grid-rows-[350px_auto_1fr_300px] dark:bg-black"
       >
         <div
           id="main-title-container"
@@ -19,47 +23,25 @@ export default function Article() {
         </div>
         <div
           id="description"
-          className="col-start-1 pt-[25px] pb-[25px] col-end-4 row-start-2 row-end-3 flex flex-col items-center"
+          className="col-start-1 col-end-4 row-start-2 row-end-3 flex flex-col items-center pt-[25px] pb-[25px]"
         >
-          <p className=" text-[2.25rem] font-bold">
-            What we offer to you
-          </p>
+          <p className="text-[2.25rem] font-bold">What we offer to you</p>
           <div class="carousel">
             <div class="group">
-              <div class="card">
-                <span class="material-symbols-outlined">location_on</span>
-                Easy E-Waste Pickup
-              </div>
-              <div class="card">
-                <span class="material-symbols-outlined">location_away</span>
-                Nearby Recycling Centers
-              </div>
-              <div class="card">
-                <span class="material-symbols-outlined">award_star</span>
-                Rewards for Responsible Disposal
-              </div>
-              <div class="card">
-                <span class="material-symbols-outlined">verified_user</span>
-                Certified Recycling Partners
-              </div>
+              {OfferFeatures.map((item) => (
+                <div class="card" key={item.message}>
+                  <span class="material-symbols-outlined">{item.var}</span>
+                  {item.message}
+                </div>
+              ))}
             </div>
             <div class="group">
-              <div class="card">
-                <span class="material-symbols-outlined">location_on</span>
-                Easy E-Waste Pickup
-              </div>
-              <div class="card">
-                <span class="material-symbols-outlined">location_away</span>
-                Nearby Recycling Centers
-              </div>
-              <div class="card">
-                <span class="material-symbols-outlined">award_star</span>
-                Rewards for Responsible Disposal
-              </div>
-              <div class="card">
-                <span class="material-symbols-outlined">verified_user</span>
-                Certified Recycling Partners
-              </div>
+              {OfferFeatures.map((item) => (
+                <div class="card" key={item.message}>
+                  <span class="material-symbols-outlined">{item.var}</span>
+                  {item.message}
+                </div>
+              ))}
             </div>
           </div>
         </div>

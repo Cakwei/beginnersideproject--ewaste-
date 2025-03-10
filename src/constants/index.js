@@ -21,3 +21,9 @@ export const selectionOpt = [
   { href: "#Marketplace", label: "Marketplace" },
   { href: "#Rewards & Gamification", label: "Rewards & Gamification" },
 ];
+export const OfferFeatures = [
+  {var: "location_on", message: "Easy E-Waste Pickup"},
+  {var: "location_away", message: "Nearby Recycling Centers"},
+  {var: "award_star", message: "Rewards for Responsible Disposal"},
+  {var: "verified_user", message: "Certified Recycling Partners"},
+]
