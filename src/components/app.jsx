@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Home from '../pages/Home.jsx';
-import Login from '../pages/Login.jsx'
-import Contact from '../pages/Contact.jsx'
-import { BrowserRouter, Routes, Route } from "react-router";
+import Home from "../pages/Home.jsx";
+import Login from "../pages/Login.jsx";
+import Contact from "../pages/Contact.jsx";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router";
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   function toggleDarkMode() {
@@ -11,9 +11,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/beginnersideproject--ewaste-" element={<Home />} />
-      <Route path="/beginnersideproject--ewaste-/login" element={<Login />} />
-      <Route path="/beginnersideproject--ewaste-/contact" element={<Contact />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );
