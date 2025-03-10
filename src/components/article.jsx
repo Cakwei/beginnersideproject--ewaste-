@@ -5,11 +5,12 @@ export default function Article() {
     <>
       <main
         id="article"
-        className="relative col-start-1 col-end-2 row-start-2 row-end-3 grid min-w-[250px] grid-cols-3 grid-rows-[350px_300px_1fr_300px]"
+        className="relative col-start-1 col-end-2 row-start-2 row-end-3 grid min-w-[250px] grid-cols-3 
+        grid-rows-[350px_auto_1fr_300px]"
       >
         <div
           id="main-title-container"
-          className="col-start-1 col-end-4 row-start-1 row-end-2 flex flex-col items-center justify-center bg-[profileImage[1].src] text-center"
+          className="col-start-1 col-end-4 row-start-1 row-end-2 flex flex-col items-center justify-center text-center"
         >
           <h1 className="text-[5rem] font-bold text-white">E-Waste</h1>
           <h5 className="text-[1.25rem] font-bold text-white">
@@ -18,9 +19,9 @@ export default function Article() {
         </div>
         <div
           id="description"
-          className="col-start-1 col-end-4 row-start-2 row-end-3 mb-[25px] flex flex-col items-center"
+          className="col-start-1 pt-[25px] pb-[25px] col-end-4 row-start-2 row-end-3 flex flex-col items-center"
         >
-          <p className="mb-[15px] text-[2.25rem] font-bold">
+          <p className=" text-[2.25rem] font-bold">
             What we offer to you
           </p>
           <div class="carousel">
@@ -64,7 +65,7 @@ export default function Article() {
         </div>
         <div
           id="selection-container"
-          className="col-start-1 col-end-4 row-start-3 row-end-4 flex w-[min(80%,725px)] flex-wrap justify-center gap-y-[25px] justify-self-center overflow-hidden pt-[15px] pb-[15px]"
+          className="col-start-1 col-end-4 row-start-3 row-end-4 flex w-[min(80%,725px)] flex-wrap justify-center gap-y-[25px] justify-self-center overflow-hidden"
         >
           {selectionOpt.map((item) => (
             <div

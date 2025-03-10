@@ -1,14 +1,17 @@
 import "./header.css";
 import { useState } from "react";
 import { navLinks } from "../constants";
+import reactImg from "../assets/react.svg";
 function Header({ toggleDarkMode }) {
   const [isMenuOpen, setIsMenuOpen] = useState("translate-x-[-250px]");
   const toggleSideMenu = () => {
     if (isMenuOpen === "translate-x-[-250px]") {
       setIsMenuOpen("translate-x-[0px]");
+      document.getElementById("close-menu-btn").style.visibility = "visible";
       document.getElementById("bgtest").style.visibility = "visible";
     } else {
       setIsMenuOpen("translate-x-[-250px]");
+      document.getElementById("close-menu-btn").style.visibility = "hidden";
       document.getElementById("bgtest").style.visibility = "hidden";
     }
   };
@@ -91,39 +94,36 @@ function Header({ toggleDarkMode }) {
         </div>
         <nav
           id="menu"
-          className={`absolute top-0 z-[2] h-[100vh] w-[250px] ${isMenuOpen} overflow-x-hidden rounded-tr-xl rounded-br-xl bg-neutral-100`}
+          className={`absolute top-0 z-[2] h-[100vh] w-[250px] ${isMenuOpen} rounded-tr-xl rounded-br-xl bg-white`}
         >
+          <i
+            id="close-menu-btn"
+            className="bi bi-arrow-left close-menu-btn invisible absolute top-[12px] left-[230px] z-[10] flex cursor-pointer items-center justify-center rounded-4xl bg-black p-[5px] text-2xl text-white"
+            onClick={toggleSideMenu}
+          ></i>
+
           <div className="relative flex flex-col items-center">
+            <div className="flex h-[75px] w-full flex-col items-center justify-center gap-3">
+              <img src={reactImg} />
+              <hr className="w-[85%] border-neutral-300" />
+            </div>
             {navLinks.map((item) => (
               <a
-                className="font-semibold"
+                className="flex items-center font-semibold text-neutral-500"
                 id={item.label}
                 key={item.label}
                 href={item.href}
               >
+                <i className={`${item.var} mr-[15px] text-2xl`} />
                 {item.label}
               </a>
             ))}
-            <svg
-              className="close-menu-btn absolute top-[10px] right-[10px] cursor-pointer text-black"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              onClick={toggleSideMenu}
-            >
-              <path
-                d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z"
-                fill="currentColor"
-              />
-            </svg>
           </div>
         </nav>
       </header>
       <p
         id="bgtest"
-        className="invisible absolute z-[1] h-dvh w-dvw bg-black opacity-80"
+        className="invisible absolute z-[1] h-dvh w-dvw bg-black opacity-50"
       ></p>
     </>
   );
