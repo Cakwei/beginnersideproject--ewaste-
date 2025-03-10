@@ -1,6 +1,6 @@
 import "./header.css";
 import { useState } from "react";
-import { navLinks } from "../../constants";
+import { navLinks } from "../constants";
 function Header({ toggleDarkMode }) {
   const [isMenuOpen, setIsMenuOpen] = useState("translate-x-[-250px]");
   const toggleSideMenu = () => {
@@ -95,7 +95,12 @@ function Header({ toggleDarkMode }) {
         >
           <div className="relative flex flex-col items-center">
             {navLinks.map((item) => (
-              <a className="font-semibold" key={item.label} href={item.href}>
+              <a
+                className="font-semibold"
+                id={item.label}
+                key={item.label}
+                href={item.href}
+              >
                 {item.label}
               </a>
             ))}
@@ -118,7 +123,7 @@ function Header({ toggleDarkMode }) {
       </header>
       <p
         id="bgtest"
-        className="invisible absolute h-dvh w-dvw bg-black opacity-80"
+        className="invisible absolute z-[1] h-dvh w-dvw bg-black opacity-80"
       ></p>
     </>
   );
