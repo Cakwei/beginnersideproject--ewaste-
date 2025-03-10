@@ -1,15 +1,20 @@
 import { useState } from "react";
-import Header from "./header.jsx";
-import Article from './article.jsx';
+import Home from '../pages/Home.jsx';
+import Login from '../pages/Login.jsx'
+import Contact from '../pages/Contact.jsx'
+import { BrowserRouter, Routes, Route } from "react-router";
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   function toggleDarkMode() {
     setIsDarkMode(!isDarkMode);
   }
   return (
-    <div className={`${isDarkMode ? "dark" : "light"} grid h-dvh w-dvw min-w-[250px] grid-cols-1 grid-rows-[65px_1fr_75px] overflow-scroll`}>
-      <Header toggleDarkMode={toggleDarkMode}/>
-      <Article />
-    </div>
+    <BrowserRouter>
+      <Routes>
+      <Route path="/beginnersideproject--ewaste-" element={<Home />} />
+      <Route path="/beginnersideproject--ewaste-/login" element={<Login />} />
+      <Route path="/beginnersideproject--ewaste-/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

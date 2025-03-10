@@ -1,9 +1,8 @@
-import "./header.css";
+import "../styles/header.css";
 import { useState } from "react";
 import { navLinks } from "../constants";
 import reactImg from "../assets/react.svg";
-import { doc } from "prettier";
-function Header({ toggleDarkMode }) {
+export default function Header({ toggleDarkMode }) {
   const [isMenuOpen, setIsMenuOpen] = useState("translate-x-[-275px]");
   const toggleSideMenu = () => {
     if (isMenuOpen === "translate-x-[-275px]") {
@@ -59,7 +58,7 @@ function Header({ toggleDarkMode }) {
             onClick={() => {
               window.location.href = "login.html";
             }}
-            className="account-btn-desktop relative hidden cursor-pointer self-center bg-green-500 pt-[8px] pr-[10px] pb-[8px] pl-[10px] text-base font-semibold text-white md:block dark:text-black"
+            className="account-btn-desktop hover:scale-[1.04] relative hidden cursor-pointer self-center dark:bg-[#74ff73] dark:text-black bg-green-500 pt-[8px] pr-[10px] pb-[8px] pl-[10px] text-base rounded-[8px] text-white md:block"
           >
             <div>Login/Register</div>
           </button>
@@ -129,5 +128,3 @@ function Header({ toggleDarkMode }) {
     </>
   );
 }
-
-export default Header;

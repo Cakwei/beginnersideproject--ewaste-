@@ -1,10 +1,10 @@
-import "./article.css";
+import "../styles/article.css";
 import {
   profileImage,
   selectionOpt,
   OfferFeatures,
 } from "../constants/index.js";
-import { doc } from "prettier";
+import { Link } from "react-router";
 export default function Article() {
   return (
     <>
@@ -29,10 +29,10 @@ export default function Article() {
           <div class="carousel">
             <div class="group">
               {OfferFeatures.map((item) => (
-                <div class="card" key={item.message}>
+                <Link class="card" to="" key={item.message}>
                   <span class="material-symbols-outlined">{item.var}</span>
                   {item.message}
-                </div>
+                </Link>
               ))}
             </div>
             <div class="group">
@@ -58,21 +58,19 @@ export default function Article() {
             </div>
           ))}
         </div>
-        <div id="profile">
-          <p>Made by:</p>
+        <div
+          id="profile"
+          className="col-start-1 col-end-4 row-start-4 row-end-5 flex flex-col items-center justify-center pt-[25px] pb-[25px]"
+        >
+          <p className="mb-[15px] text-4xl font-extrabold">Made by:</p>
           <a href="https://github.com/cakwei">
             <img
-              className="h-[125px] w-[125px]"
+              className="w-[150px] translate-y-[5px] mix-blend-multiply transition-[0.5s] hover:scale-[1.05]"
               src={profileImage[0].src}
               alt={profileImage[0].alt}
             />
           </a>
         </div>
-        <div
-          id="chatbot"
-          className="hidden"
-          onClick="alert('Chatbot soon');"
-        ></div>
       </main>
     </>
   );

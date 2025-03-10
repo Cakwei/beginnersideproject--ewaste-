@@ -1,9 +1,9 @@
 import eWaste from "../assets/img1.jpg";
 import fireFly from "../assets/ff.png";
 export const navLinks = [
-  { href: "/#Home", label: "Home", var: "bi bi-house-fill"},
-  { href: "/#Login/Register", label: "Login/Register", var: "bi bi-person-vcard-fill" },
-  { href: "/#Support", label: "Support", var: "bi bi-telephone-fill" },
+  { href: "/", label: "Home", var: "bi bi-house-fill"},
+  { href: "/beginnersideproject--ewaste-/login", label: "Login/Register", var: "bi bi-person-vcard-fill" },
+  { href: "/beginnersideproject--ewaste-/contact", label: "Support", var: "bi bi-telephone-fill" },
 ];
 export const profileImage = [
   { src: fireFly, name: "Profile Icon" },
