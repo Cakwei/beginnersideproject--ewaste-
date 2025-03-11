@@ -4,10 +4,6 @@ import Login from "../pages/Login.jsx";
 import Contact from "../pages/Contact.jsx";
 import { BrowserRouter, HashRouter, Route, Routes } from "react-router";
 export default function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  function toggleDarkMode() {
-    setIsDarkMode(!isDarkMode);
-  }
   return (
     <BrowserRouter>
       <Routes>

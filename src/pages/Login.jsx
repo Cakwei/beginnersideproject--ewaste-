@@ -1,16 +1,21 @@
-import { useState, useEffect } from "react";
-import Header from "../components/header.jsx";
+import axios from "axios";
+import { getDefaultMode } from "../constants/index.js";
+import '../styles/Login.css';
 export default function Login() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  function toggleDarkMode() {
-    setIsDarkMode(!isDarkMode);
+
+  const apiCall = () => {
+    axios.get('http://localhost:8080').then((data) => {
+      //this console.log will be in our frontend console
+      console.log(data)
+    })
   }
+  
   return (
     <div
-      className={`${isDarkMode ? "dark" : "light"} grid h-dvh w-dvw min-w-[250px] grid-cols-1 grid-rows-[65px_1fr_75px] overflow-scroll text-black`}
+      className={`${getDefaultMode() ? "dark" : "light"} text-black dark:text-white bg-white dark:bg-black`}
     >
       <title>Account Sign In</title>
-      <Header toggleDarkMode={toggleDarkMode} />
+        <button className="btn" onClick={apiCall}>Make API Call</button>
     </div>
   );
 }

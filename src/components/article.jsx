@@ -4,7 +4,6 @@ import {
   selectionOpt,
   OfferFeatures,
 } from "../constants/index.js";
-import { Link } from "react-router";
 export default function Article() {
   return (
     <>
@@ -29,18 +28,18 @@ export default function Article() {
           <div class="carousel">
             {" "}
             //Change here
-            <div class="group">
+            <div className="group">
               {OfferFeatures.map((item) => (
-                <Link class="card" to="" key={item.message}>
-                  <span class="material-symbols-outlined">{item.var}</span>
+                <div className="card" key={item.message}>
+                  <span className={`${item.var} text-[50px]`}></span>
                   {item.message}
-                </Link>
+                </div>
               ))}
             </div>
-            <div class="group">
+            <div className="group">
               {OfferFeatures.map((item) => (
-                <div class="card" key={item.message}>
-                  <span class="material-symbols-outlined">{item.var}</span>
+                <div className="card" key={item.var}>
+                  <span className={`${item.var} text-[50px]`}></span>
                   {item.message}
                 </div>
               ))}

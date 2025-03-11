@@ -1,5 +1,12 @@
 import eWaste from "../assets/img1.jpg";
 import fireFly from "../assets/ff.png";
+
+//Universal functions
+export function getDefaultMode() {
+  return localStorage.getItem("enableDarkMode") === "true" ? true : false; // True = Dark, False = Light
+}
+
+//Arrays
 export const navLinks = [
   { href: "/", label: "Home", var: "bi bi-house-fill"},
   { href: "/login", label: "Login/Register", var: "bi bi-person-vcard-fill" },
@@ -22,8 +29,8 @@ export const selectionOpt = [
   { href: "#Rewards & Gamification", label: "Rewards & Gamification" },
 ];
 export const OfferFeatures = [
-  {var: "location_on", message: "Easy E-Waste Pickup"},
-  {var: "location_away", message: "Nearby Recycling Centers"},
-  {var: "award_star", message: "Rewards for Responsible Disposal"},
-  {var: "verified_user", message: "Certified Recycling Partners"},
+  {var: "bi bi-geo-fill", message: "Easy E-Waste Pickup"},
+  {var: "bi bi-building-fill", message: "Nearby Recycling Centers"},
+  {var: "bi bi-award", message: "Rewards for Responsible Disposal"},
+  {var: "bi bi-person-fill-check", message: "Certified Recycling Partners"},
 ]
