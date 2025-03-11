@@ -27,6 +27,8 @@ export default function Article() {
         >
           <p className="text-[2.25rem] font-bold">What we offer to you</p>
           <div class="carousel">
+            {" "}
+            //Change here
             <div class="group">
               {OfferFeatures.map((item) => (
                 <Link class="card" to="" key={item.message}>
