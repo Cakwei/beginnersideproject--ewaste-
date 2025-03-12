@@ -6,19 +6,19 @@ import "../styles/Home.css";
 import { getDefaultMode } from "../constants/index.js";
 
 export default function Home() {
-  const [enableDarkMode, setIsDarkMode] = useState(getDefaultMode());
+  const [isDarkMode, setIsDarkMode] = useState(getDefaultMode());
 
   function toggleDarkMode() {
-    setIsDarkMode(!enableDarkMode);
+    setIsDarkMode(!isDarkMode);
   }
 
   useEffect(() => {
-    localStorage.setItem("enableDarkMode", enableDarkMode), [enableDarkMode];
+    localStorage.setItem("enableDarkMode", isDarkMode), [isDarkMode];
   });
 
   return (
     <div
-      className={`${enableDarkMode ? "dark" : "light"} grid h-dvh w-dvw min-w-[250px] grid-cols-1 grid-rows-[65px_1fr_200px] overflow-scroll`}
+      className={`${isDarkMode ? "dark" : "light"} grid h-dvh w-dvw min-w-[250px] grid-cols-1 grid-rows-[65px_1fr_200px] overflow-scroll`}
     >
       <Header toggleDarkMode={toggleDarkMode} />
       <Article />

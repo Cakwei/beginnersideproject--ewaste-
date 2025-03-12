@@ -9,7 +9,7 @@ export default function Article() {
     <>
       <main
         id="article"
-        className="relative col-start-1 col-end-2 row-start-2 row-end-3 grid min-w-[250px] grid-cols-3 grid-rows-[350px_auto_1fr_300px] dark:bg-black"
+        className={`relative col-start-1 col-end-2 row-start-2 row-end-3 grid min-w-[250px] grid-cols-3 bg-white dark:text-white grid-rows-[350px_auto_1fr_300px] dark:bg-black`}
       >
         <div
           id="main-title-container"
@@ -27,7 +27,6 @@ export default function Article() {
           <p className="text-[2.25rem] font-bold">What we offer to you</p>
           <div class="carousel">
             {" "}
-            //Change here
             <div className="group">
               {OfferFeatures.map((item) => (
                 <div className="card" key={item.message}>

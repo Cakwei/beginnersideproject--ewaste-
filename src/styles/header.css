@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "daisyui";
 #account-btn-desktop div:hover::before {
   width: 100%;
 }

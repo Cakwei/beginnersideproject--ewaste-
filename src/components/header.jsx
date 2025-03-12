@@ -1,5 +1,6 @@
 import "../styles/header.css";
 import { useState } from "react";
+import { NavLink } from "react-router";
 import { navLinks } from "../constants";
 import reactImg from "../assets/react.svg";
 export default function Header({ toggleDarkMode }) {
@@ -21,7 +22,7 @@ export default function Header({ toggleDarkMode }) {
       >
         <svg
           id="hamburger-menu"
-          className="hamburger-menu ml-[15px] flex h-[32px] min-h-[32px] w-[32px] min-w-[32px] cursor-pointer justify-between transition-transform hover:scale-[1.15] dark:text-white"
+          className="hamburger-menu ml-[15px] text-black flex h-[32px] min-h-[32px] w-[32px] min-w-[32px] cursor-pointer justify-between transition-transform hover:scale-[1.15] dark:text-white"
           width="0"
           height="0"
           viewBox="0 0 24 24"
@@ -54,18 +55,14 @@ export default function Header({ toggleDarkMode }) {
           >
             <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
           </svg>
-          <button
-            onClick={() => {
-              window.location.href = "login.html";
-            }}
-            className="account-btn-desktop hover:scale-[1.04] relative hidden cursor-pointer self-center dark:bg-[#74ff73] dark:text-black bg-green-500 pt-[8px] pr-[10px] pb-[8px] pl-[10px] text-base rounded-[8px] text-white md:block"
+          <NavLink
+            to="/login"
+            className="account-btn-desktop btn rounded-xl hover:scale-[1.01]"
           >
             <div>Login/Register</div>
-          </button>
-          <button
-            onClick={() => {
-              window.location.href = "login.html";
-            }}
+          </NavLink>
+          <NavLink
+            to="/login"
             className="account-btn-mobile cursor-pointer text-black transition-transform hover:scale-[1.15] md:hidden dark:text-white"
           >
             <div>
@@ -88,7 +85,7 @@ export default function Header({ toggleDarkMode }) {
                 />
               </svg>
             </div>
-          </button>
+          </NavLink>
         </div>
         <nav
           id="menu"
