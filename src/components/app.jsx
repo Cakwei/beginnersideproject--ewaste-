@@ -5,7 +5,7 @@ import Contact from "../pages/Contact.jsx";
 import { BrowserRouter, HashRouter, Route, Routes } from "react-router";
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

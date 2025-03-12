@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import "../styles/Login.css";
 import { getDefaultMode } from "../constants";
+import reactIcon from "../assets/react.svg";
+import { NavLink } from "react-router";
 export default function Login() {
   const [name, setName] = useState("");
   const [pass, setPass] = useState("");
   const [isDarkMode, setIsDarkMode] = useState(getDefaultMode());
+  const [showState, setShowState] = useState('password');
   function handleSubmit(e) {
     e.preventDefault();
     setName(""), setPass("");
@@ -15,11 +18,13 @@ export default function Login() {
   useEffect(() => {
     localStorage.setItem("enableDarkMode", isDarkMode), [isDarkMode];
   });
+  function togglePassShow() {
+    setShowState(showState === 'password' ? 'text' : 'password')
+  } 
   return (
     <div
-      className={`${isDarkMode ? "dark" : "light"} flex h-dvh w-dvw items-center justify-center overflow-scroll bg-yellow-300 text-black dark:bg-red-300 dark:text-white`}
+      className={`${isDarkMode ? "dark" : "light"} flex h-dvh w-dvw justify-center overflow-scroll bg-green-400 text-black pt-25 dark:bg-neutral-800 dark:text-white`}
     >
-      {" "}
       <title>Log In</title>
       <div className="absolute top-0">
         <label className="swap swap-rotate">
@@ -51,10 +56,15 @@ export default function Login() {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="flex w-[min(80%,500px)] min-w-[150px] flex-col items-center overflow-hidden bg-white pt-20 pb-20 text-black dark:bg-violet-500 dark:text-white"
+        className="flex relative w-[min(80%,500px)] h-[500px] min-w-[150px] flex-col items-center gap-[35px] bg-white pt-12 text-black shadow-2xl drop-shadow-2xl dark:bg-white dark:text-white"
       >
-        <div id="usernamd-container">
-          <label className="input validator">
+        <NavLink to="/" className="bi bi-box-arrow-in-left text-3xl top-1.5 cursor-pointer hover:scale-[1.1] left-2.5 flex items-center absolute"></NavLink>
+        <img className="w-[65px]" src={reactIcon} />
+        <div
+          id="username-container"
+          className="flex w-[100%] justify-center text-white"
+        >
+          <label className="input validator w-[min(100%,250px)]">
             <svg
               className="h-[1em] opacity-50"
               xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +85,7 @@ export default function Login() {
               type="input"
               required
               onChange={(e) => {
-                setName(e.target.value);
+                setName(e.target.value), showState ? 'text' : 'password';
               }}
               value={name}
               placeholder="Username"
@@ -86,9 +96,7 @@ export default function Login() {
             />
           </label>
         </div>
-
-        <br />
-        <div id="password-container">
+        <div id="password-container" className="w-[min(100%,250px)] text-white">
           <label className="input validator">
             <svg
               className="h-[1em] opacity-50"
@@ -107,7 +115,8 @@ export default function Login() {
               </g>
             </svg>
             <input
-              type="password"
+              id="password"
+              type={showState}
               required
               onChange={(e) => {
                 setPass(e.target.value);
@@ -119,9 +128,13 @@ export default function Login() {
               title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
             />
           </label>
+          <div className="text-black text-xs mt-2 flex items-center gap-x-1">
+            <input type="checkbox" onClick={togglePassShow}></input>
+            <label>Remember me</label>
+          </div>
         </div>
-        <button className="btn btn-success" type="submit">
-          Submit form
+        <button className="btn btn-success w-[150px]" type="submit">
+          Login
         </button>
       </form>
     </div>
