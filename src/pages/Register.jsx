@@ -9,15 +9,13 @@ export default function Login() {
   const [pass, setPass] = useState("");
   const [isDarkMode, setIsDarkMode] = useState(getDefaultMode());
   const [showState, setShowState] = useState("password");
-  const url = "http://localhost:8080/login";
+  const url = "http://localhost:8080/post";
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit(e) {  e.preventDefault();
     try {
-      const res = await axios.post(url, {
-        name: name,
-        pass: pass,
-      });
+    
+      const res = await axios.post(url, {title: 'ssssd'});
+      console.log(res);
     } catch (err) {
       console.log("error" + err);
     }
@@ -35,7 +33,7 @@ export default function Login() {
     <div
       className={`${isDarkMode ? "dark" : "light"} flex h-dvh w-dvw justify-center overflow-scroll bg-green-400 pt-25 text-black dark:bg-neutral-800 dark:text-white`}
     >
-      <title>Log In</title>
+      <title>Sign Up</title>
       <div className="absolute top-0">
         <label className="swap swap-rotate">
           <input
@@ -72,7 +70,7 @@ export default function Login() {
           to="/"
           className="bi bi-box-arrow-in-left absolute top-1.5 left-2.5 flex cursor-pointer items-center text-3xl hover:scale-[1.1]"
         ></NavLink>
-        <p className="text-5xl font-bold">LOGIN</p>
+        <img className="w-[65px]" src={reactIcon} />
         <div
           id="username-container"
           className="flex w-[100%] justify-center text-white"
@@ -149,18 +147,6 @@ export default function Login() {
         <button className="btn btn-success w-[150px]" type="submit">
           Login
         </button>
-        <div className="flex items-center justify-center">
-          <button className="btn btn-secondary w-[150px] rounded-[5px] p-1.5">
-            <svg
-              className="mr-[5px] w-[23px] fill-white"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-            >
-              <path d="M288 64C64 64 0 160 0 272S80 448 176 448l8.4 0c24.2 0 46.4-13.7 57.2-35.4l23.2-46.3c4.4-8.8 13.3-14.3 23.2-14.3s18.8 5.5 23.2 14.3l23.2 46.3c10.8 21.7 33 35.4 57.2 35.4l8.4 0c96 0 176-64 176-176s-64-208-288-208zM96 256a64 64 0 1 1 128 0A64 64 0 1 1 96 256zm320-64a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
-            </svg>
-            Private Mode
-          </button>
-        </div>
       </form>
     </div>
   );
